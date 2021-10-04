@@ -1,0 +1,17 @@
+allprojects {
+  apply plugin: 'java'
+
+  group 'ru.vsu.shop'
+  version '1.0-SNAPSHOT'
+
+  repositories {
+    mavenCentral()
+  }
+}
+
+dependencies {
+  implementation(project(':di'))
+  implementation(project(':ui'))
+}
+
+
