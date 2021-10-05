@@ -1,8 +1,11 @@
-package ru.vsu.shop.db.entity;
+package ru.vsu.shop.service.model;
+
+import ru.vsu.shop.db.entity.OrderStatus;
+import ru.vsu.shop.db.entity.ProductInOrderEntity;
 
 import java.util.List;
 
-public class OrderEntity {
+public class OrderDto {
   private Integer id;
 
   private OrderStatus status;
@@ -11,8 +14,14 @@ public class OrderEntity {
 
   private List<ProductInOrderEntity> products;
 
-  public OrderEntity(Integer id, OrderStatus status, Integer userId, List<ProductInOrderEntity> products) {
+  public OrderDto(Integer id, OrderStatus status, Integer userId, List<ProductInOrderEntity> products) {
     this.id = id;
+    this.status = status;
+    this.userId = userId;
+    this.products = products;
+  }
+
+  public OrderDto(OrderStatus status, Integer userId, List<ProductInOrderEntity> products) {
     this.status = status;
     this.userId = userId;
     this.products = products;

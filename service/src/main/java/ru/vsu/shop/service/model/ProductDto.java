@@ -1,16 +1,21 @@
-package ru.vsu.shop.db.entity;
+package ru.vsu.shop.service.model;
 
 import java.math.BigDecimal;
 
-public class ProductEntity {
+public class ProductDto {
   private Integer id;
 
   private String name;
 
   private BigDecimal price;
 
-  public ProductEntity(Integer id, String name, BigDecimal price) {
+  public ProductDto(Integer id, String name, BigDecimal price) {
     this.id = id;
+    this.name = name;
+    this.price = price;
+  }
+
+  public ProductDto(String name, BigDecimal price) {
     this.name = name;
     this.price = price;
   }

@@ -1,4 +1,4 @@
 dependencies {
   implementation(project(':di'))
-  implementation(project(":controller"))
+  implementation(project(":service"))
 }

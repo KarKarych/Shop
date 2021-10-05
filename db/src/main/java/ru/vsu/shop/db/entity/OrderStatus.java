@@ -3,9 +3,10 @@ package ru.vsu.shop.db.entity;
 import java.util.Optional;
 
 public enum OrderStatus {
-  UNDER_PROCESSING(1),
-  PAID(2),
-  CLOSED(3);
+  CART(1),
+  UNDER_PROCESSING(2),
+  PAID(3),
+  CLOSED(4);
 
   private final Integer id;
 
