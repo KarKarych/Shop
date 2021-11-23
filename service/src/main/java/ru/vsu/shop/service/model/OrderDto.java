@@ -12,19 +12,34 @@ public class OrderDto {
 
   private Integer userId;
 
-  private List<ProductInOrderEntity> products;
+  private List<ProductInOrderDto> products;
 
-  public OrderDto(Integer id, OrderStatus status, Integer userId, List<ProductInOrderEntity> products) {
-    this.id = id;
-    this.status = status;
-    this.userId = userId;
-    this.products = products;
+  private final boolean isEmpty;
+
+  public OrderDto() {
+    isEmpty = true;
   }
 
-  public OrderDto(OrderStatus status, Integer userId, List<ProductInOrderEntity> products) {
-    this.status = status;
+  public OrderDto(Integer id, Integer status, Integer userId, List<ProductInOrderDto> products) {
+    this.id = id;
+
+    if (OrderStatus.fromId(status).isPresent()) {
+      this.status = OrderStatus.fromId(status).get();
+    }
+
     this.userId = userId;
     this.products = products;
+    isEmpty = false;
+  }
+
+  public OrderDto(Integer status, Integer userId, List<ProductInOrderDto> products) {
+    if (OrderStatus.fromId(status).isPresent()) {
+      this.status = OrderStatus.fromId(status).get();
+    }
+
+    this.userId = userId;
+    this.products = products;
+    isEmpty = false;
   }
 
   public Integer getId() {
@@ -51,11 +66,30 @@ public class OrderDto {
     this.userId = userId;
   }
 
-  public List<ProductInOrderEntity> getProducts() {
+  public List<ProductInOrderDto> getProducts() {
     return products;
   }
 
-  public void setProducts(List<ProductInOrderEntity> products) {
+  public void setProducts(List<ProductInOrderDto> products) {
     this.products = products;
+  }
+
+  public boolean isEmpty() {
+    return isEmpty;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder productsString = new StringBuilder();
+
+    for (ProductInOrderDto product : products) {
+      productsString.append(product.toString()).append("\n");
+    }
+
+    return "OrderDto{" +
+      "status=" + status +
+      ", userId=" + userId +
+      ", products=" + productsString +
+      '}';
   }
 }

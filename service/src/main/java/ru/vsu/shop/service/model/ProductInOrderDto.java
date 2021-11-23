@@ -1,13 +1,13 @@
-package ru.vsu.shop.db.entity;
+package ru.vsu.shop.service.model;
 
-public class ProductInOrderEntity {
+public class ProductInOrderDto {
   private Integer productId;
 
   private Integer orderId;
 
   private Integer productCount;
 
-  public ProductInOrderEntity(Integer productId, Integer orderId, Integer productCount) {
+  public ProductInOrderDto(Integer productId, Integer orderId, Integer productCount) {
     this.productId = productId;
     this.orderId = orderId;
     this.productCount = productCount;

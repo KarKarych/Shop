@@ -8,12 +8,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static ru.vsu.shop.db.storage.StorageInMemory.USERS;
+
 public class UserRepositoryImpl implements UserRepository {
 
-  private final List<UserEntity> users;
+  private final List<UserEntity> users = USERS;
 
   public UserRepositoryImpl() {
-    users = new StorageInMemory().getUsers();
   }
 
   @Override

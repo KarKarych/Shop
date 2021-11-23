@@ -18,6 +18,12 @@ public class OrderEntity {
     this.products = products;
   }
 
+  public OrderEntity(OrderStatus status, Integer userId, List<ProductInOrderEntity> products) {
+    this.status = status;
+    this.userId = userId;
+    this.products = products;
+  }
+
   public Integer getId() {
     return id;
   }

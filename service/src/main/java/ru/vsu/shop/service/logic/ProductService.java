@@ -8,11 +8,11 @@ import java.util.Optional;
 
 public interface ProductService {
 
-  Optional<ProductDto> findById(Integer id);
+  ProductDto findById(Integer id);
 
   ProductDto updateProduct(ProductDto productDto);
 
-  ProductDto updateProduct(UserDto userDto);
+  ProductDto createProduct(ProductDto productDto);
 
   void deleteById(Integer id);
 

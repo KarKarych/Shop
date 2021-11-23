@@ -9,15 +9,23 @@ public class UserDto {
 
   private String password;
 
+  private final boolean isEmpty;
+
   public UserDto(String username, String name) {
     this.username = username;
     this.name = name;
+    isEmpty = false;
+  }
+
+  public UserDto() {
+    isEmpty = true;
   }
 
   public UserDto(String username, String name, String password) {
     this.username = username;
     this.name = name;
     this.password = password;
+    isEmpty = false;
   }
 
   public UserDto(Integer id, String username, String name, String password) {
@@ -25,6 +33,14 @@ public class UserDto {
     this.username = username;
     this.name = name;
     this.password = password;
+    isEmpty = false;
+  }
+
+  public UserDto(Integer id, String username, String name) {
+    this.id = id;
+    this.username = username;
+    this.name = name;
+    isEmpty = false;
   }
 
   public Integer getId() {
@@ -57,6 +73,10 @@ public class UserDto {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public boolean isEmpty() {
+    return isEmpty;
   }
 
   @Override

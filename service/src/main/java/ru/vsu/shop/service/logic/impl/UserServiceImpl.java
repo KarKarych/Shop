@@ -1,29 +1,47 @@
 package ru.vsu.shop.service.logic.impl;
 
 import org.di.annotation.Autowired;
+import ru.vsu.shop.db.entity.OrderStatus;
+import ru.vsu.shop.db.entity.ProductInOrderEntity;
+import ru.vsu.shop.db.entity.UserEntity;
 import ru.vsu.shop.db.repository.UserRepository;
 import ru.vsu.shop.service.logic.UserService;
+import ru.vsu.shop.service.model.OrderDto;
 import ru.vsu.shop.service.model.UserDto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class UserServiceImpl implements UserService {
   @Autowired
-  UserRepository userRepository;
+  private UserRepository userRepository;
 
   @Override
   public UserDto createUser(UserDto userDto) {
-    return null;
+    var result = userRepository.save(new UserEntity(userDto.getUsername(),
+      userDto.getName(),
+      userDto.getPassword()));
+
+    return new UserDto(result.getId(), result.getUsername(), result.getName(), result.getPassword());
   }
 
   @Override
   public UserDto updateUser(UserDto userDto) {
-    return null;
+    var result = userRepository.save(new UserEntity(
+      userDto.getId(),
+      userDto.getUsername(),
+      userDto.getName(),
+      userDto.getPassword()));
+
+    return new UserDto(result.getId(),
+      result.getUsername(),
+      result.getName(),
+      result.getPassword());
   }
 
   @Override
-  public void deleteUserById(Integer id) {
+  public void deleteById(Integer id) {
     userRepository.deleteById(id);
   }
 
@@ -41,12 +59,14 @@ public class UserServiceImpl implements UserService {
     return userRepository.findByName(search).stream().map(userEntity ->
       new UserDto(userEntity.getId(),
         userEntity.getUsername(),
-        userEntity.getPassword(),
         userEntity.getName())).collect(Collectors.toList());
   }
 
   @Override
   public List<UserDto> findAll() {
-    return null;
+    return userRepository.findAll().stream().map(userEntity ->
+      new UserDto(userEntity.getId(),
+        userEntity.getUsername(),
+        userEntity.getName())).collect(Collectors.toList());
   }
 }

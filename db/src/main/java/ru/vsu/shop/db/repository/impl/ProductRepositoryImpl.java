@@ -7,13 +7,12 @@ import ru.vsu.shop.db.storage.StorageInMemory;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
+import static ru.vsu.shop.db.storage.StorageInMemory.PRODUCTS;
 public class ProductRepositoryImpl implements ProductRepository {
 
-  private final List<ProductEntity> products;
+  private final List<ProductEntity> products = PRODUCTS;
 
   public ProductRepositoryImpl() {
-    products = new StorageInMemory().getProducts();
   }
 
   @Override

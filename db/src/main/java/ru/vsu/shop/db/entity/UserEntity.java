@@ -9,12 +9,24 @@ public class UserEntity {
 
   private String name;
 
+  public UserEntity(String username, String name) {
+    this.username = username;
+    this.name = name;
+  }
+
+  public UserEntity(String username, String name, String password) {
+    this.username = username;
+    this.name = name;
+    this.password = password;
+  }
+
   public UserEntity(Integer id, String username, String name, String password) {
     this.id = id;
     this.username = username;
-    this.password = password;
     this.name = name;
+    this.password = password;
   }
+
 
   public Integer getId() {
     return id;

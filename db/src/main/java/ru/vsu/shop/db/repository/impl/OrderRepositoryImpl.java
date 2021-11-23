@@ -8,14 +8,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static ru.vsu.shop.db.storage.StorageInMemory.ORDERS;
+
 
 public class OrderRepositoryImpl implements OrderRepository {
-  private final List<OrderEntity> orders;
+  private final List<OrderEntity> orders = ORDERS;
 
   public OrderRepositoryImpl() {
-    var storage = new StorageInMemory();
-    
-    orders = storage.getOrders();
   }
 
   @Override

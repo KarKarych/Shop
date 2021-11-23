@@ -7,13 +7,13 @@ import java.util.Optional;
 
 public interface OrderService {
 
-  Optional<OrderDto> findById(Integer id);
+  OrderDto findById(Integer id);
 
   List<OrderDto> findByUserId(Integer id);
 
-  OrderDto save(OrderDto orderDto);
+  OrderDto createOrder(OrderDto orderDto);
 
-  OrderDto update(OrderDto orderDto);
+  OrderDto updateOrder(OrderDto orderDto);
 
   void deleteById(Integer id);
 }

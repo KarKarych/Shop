@@ -15,6 +15,11 @@ public class ProductEntity {
     this.price = price;
   }
 
+  public ProductEntity(String name, BigDecimal price) {
+    this.name = name;
+    this.price = price;
+  }
+
   public Integer getId() {
     return id;
   }
